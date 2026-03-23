@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAM Cockpit — Pilotage Comptes Clés</title>
+    <meta name="description" content="Cockpit de pilotage des comptes clés pour le suivi KAM et sponsors.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="header-title">KAM Cockpit</h1>
+                    <p class="header-subtitle">Pilotage Comptes Clés</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <span class="header-date" id="headerDate"></span>
+                <button class="btn btn-ghost" id="exportBtn" title="Exporter les données">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Export JSON
+                </button>
+                <button class="btn btn-ghost" id="importBtn" title="Importer des données">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    Import
+                </button>
+                <input type="file" id="importFile" accept=".json" style="display:none">
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tabs" id="tabNav">
+            <button class="tab active" data-tab="comex">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                </svg>
+                Dashboard COMEX
+            </button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="content" id="contentArea">
+            <!-- Dynamic content rendered by JS -->
+        </main>
+    </div>
+
+    <!-- Modal for adding actions -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="actionModal">
+            <div class="modal-header">
+                <h3>Nouvelle action</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <form id="actionForm">
+                <input type="hidden" id="formAccountId">
+                <div class="form-group">
+                    <label for="formAction">Action</label>
+                    <input type="text" id="formAction" placeholder="Décrire l'action..." required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="formResponsible">Responsable</label>
+                        <input type="text" id="formResponsible" placeholder="Nom du responsable" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formDeadline">Deadline</label>
+                        <input type="date" id="formDeadline" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="formNextAction">Prochaine action concrète</label>
+                    <input type="text" id="formNextAction" placeholder="Ex : Envoyer la proposition...">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-ghost" id="modalCancel">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for editing account info -->
+    <div class="modal-overlay" id="editAccountOverlay">
+        <div class="modal" id="editAccountModal">
+            <div class="modal-header">
+                <h3>Modifier le compte</h3>
+                <button class="modal-close" id="editAccountClose">&times;</button>
+            </div>
+            <form id="editAccountForm">
+                <input type="hidden" id="editAccountId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editKam">KAM</label>
+                        <input type="text" id="editKam" placeholder="Nom du KAM" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSponsor">Sponsor</label>
+                        <input type="text" id="editSponsor" placeholder="Nom du sponsor" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-ghost" id="editAccountCancel">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
