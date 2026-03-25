@@ -254,6 +254,39 @@
     const editAccountClose = document.getElementById('editAccountClose');
     const editAccountCancel = document.getElementById('editAccountCancel');
 
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = themeToggle ? themeToggle.querySelector('.sun-icon') : null;
+    const moonIcon = themeToggle ? themeToggle.querySelector('.moon-icon') : null;
+
+    // ==========================================
+    // THEME MANAGEMENT
+    // ==========================================
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('kam_cockpit_theme', theme);
+        if (sunIcon && moonIcon) {
+            if (theme === 'light') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+        }
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+        });
+    }
+
+    const savedTheme = localStorage.getItem('kam_cockpit_theme') || 'dark';
+    applyTheme(savedTheme);
+
     // ==========================================
     // RENDERING
     // ==========================================

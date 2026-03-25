@@ -49,6 +49,37 @@
     --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    
+    --scrollbar-bg: rgba(255,255,255,0.1);
+    --scrollbar-hover: rgba(255,255,255,0.18);
+    --bg-business-gradient: rgba(30, 33, 55, 0.4);
+}
+
+[data-theme="light"] {
+    --bg-primary: #f0f4f8;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8fafc;
+    --bg-glass: rgba(0, 0, 0, 0.03);
+    --bg-input: #ffffff;
+
+    --border-subtle: #e2e8f0;
+    --border-light: #cbd5e1;
+    --border-focus: rgba(99, 122, 255, 0.4);
+
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+
+    --accent-blue-glow: rgba(99, 122, 255, 0.1);
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    
+    --scrollbar-bg: rgba(0,0,0,0.15);
+    --scrollbar-hover: rgba(0,0,0,0.25);
+    --bg-business-gradient: rgba(235, 240, 255, 0.5);
 }
 
 /* Reset & Base */
@@ -81,11 +112,11 @@ body {
     background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.1);
+    background: var(--scrollbar-bg);
     border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.18);
+    background: var(--scrollbar-hover);
 }
 
 /* ========================================
@@ -886,7 +917,7 @@ tr:hover {
 }
 
 .business-card {
-    background: linear-gradient(145deg, var(--bg-card), rgba(30, 33, 55, 0.4));
+    background: linear-gradient(145deg, var(--bg-card), var(--bg-business-gradient));
     border-color: rgba(99, 122, 255, 0.2);
 }
 
