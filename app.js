@@ -93,6 +93,11 @@
         return 'a' + Math.random().toString(36).substr(2, 9);
     }
 
+    function formatNumber(num) {
+        if (!num && num !== 0) return '0';
+        return new Intl.NumberFormat('fr-FR').format(num);
+    }
+
     function formatCurrency(num) {
         if (!num) return '0 €';
         return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(num);
@@ -468,15 +473,15 @@
                     <div class="metric-row-edit mt-2">
                         <div class="input-wrap">
                             <label>CA Réalisé (€)</label>
-                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="caRealise" value="${bm.caRealise}">
+                            <input type="text" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="caRealise" value="${formatNumber(bm.caRealise)}">
                         </div>
                         <div class="input-wrap">
                             <label>CA Cible (€)</label>
-                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="caCible" value="${bm.caCible}">
+                            <input type="text" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="caCible" value="${formatNumber(bm.caCible)}">
                         </div>
                         <div class="input-wrap">
                             <label>Marge Brute (€)</label>
-                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="margeBrute" value="${bm.margeBrute}">
+                            <input type="text" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="margeBrute" value="${formatNumber(bm.margeBrute)}">
                         </div>
                     </div>
                 </div>
@@ -485,11 +490,11 @@
                     <div class="metric-row-edit mt-2">
                         <div class="input-wrap">
                             <label>RDV Conquête</label>
-                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="commercialDynamics" data-field="rdvConquete" value="${cd.rdvConquete}">
+                            <input type="text" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="commercialDynamics" data-field="rdvConquete" value="${formatNumber(cd.rdvConquete)}">
                         </div>
                         <div class="input-wrap">
                             <label>Op. Détectées</label>
-                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="commercialDynamics" data-field="opportunites" value="${cd.opportunites}">
+                            <input type="text" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="commercialDynamics" data-field="opportunites" value="${formatNumber(cd.opportunites)}">
                         </div>
                     </div>
                 </div>
@@ -585,7 +590,10 @@
         }
         if (e.target.matches('.update-metric')) {
             const { account, parent, field } = e.target.dataset;
-            updateMetricField(account, parent, field, parseFloat(e.target.value) || 0);
+            const raw = e.target.value.replace(/[^\d.-]/g, '');
+            const parsedValue = parseFloat(raw) || 0;
+            e.target.value = formatNumber(parsedValue);
+            updateMetricField(account, parent, field, parsedValue);
         }
     });
 
