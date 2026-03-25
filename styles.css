@@ -809,6 +809,130 @@ tr:hover {
 }
 
 /* ========================================
+   Business & Commercial Metrics
+   ======================================== */
+
+.business-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.metric-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+}
+
+.metric-block h4 {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 8px;
+}
+
+.metric-row-edit {
+    display: flex;
+    gap: 12px;
+}
+
+.input-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-wrap label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.block-input {
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    width: 100%;
+    transition: all var(--transition-fast);
+}
+
+.block-input:hover {
+    border-color: var(--border-light);
+}
+
+.block-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: rgba(99, 122, 255, 0.05);
+    box-shadow: 0 0 0 3px var(--accent-blue-glow);
+}
+
+/* Comex Business Stats */
+.comex-stats-business {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.business-card {
+    background: linear-gradient(145deg, var(--bg-card), rgba(30, 33, 55, 0.4));
+    border-color: rgba(99, 122, 255, 0.2);
+}
+
+.stat-target {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.account-stats-mini {
+    display: flex;
+    gap: 16px;
+}
+
+.mini-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-stat-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.mini-stat-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+/* Utility classes */
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 16px; }
+.mt-4 { margin-top: 24px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 16px; }
+.mb-4 { margin-bottom: 24px; }
+.pb-2 { padding-bottom: 8px; }
+.border-bottom-subtle { border-bottom: 1px solid var(--border-subtle); }
+.text-xs { font-size: 0.75rem; }
+.text-muted { color: var(--text-muted); }
+.text-lg { font-size: 1.1rem; }
+
+/* ========================================
    Modals
    ======================================== */
 .modal-overlay {

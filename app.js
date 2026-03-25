@@ -22,127 +22,63 @@
 
     const DEFAULT_DATA = {
         accounts: {
-            MAIF: {
-                kam: 'Sophie Martin',
-                sponsor: 'Jean Dupont',
-                actions: [
-                    {
-                        id: generateId(),
-                        action: 'Renouvellement contrat flotte auto',
-                        responsible: 'Sophie Martin',
-                        deadline: '2026-04-15',
-                        progress: 75,
-                        nextAction: 'Envoyer la proposition tarifaire révisée',
-                    },
-                    {
-                        id: generateId(),
-                        action: 'Déploiement assurance habitation collective',
-                        responsible: 'Pierre Lemoine',
-                        deadline: '2026-05-01',
-                        progress: 40,
-                        nextAction: 'Organiser le comité de pilotage',
-                    },
-                    {
-                        id: generateId(),
-                        action: 'Étude de marché produits santé',
-                        responsible: 'Sophie Martin',
-                        deadline: '2026-03-20',
-                        progress: 20,
-                        nextAction: 'Finaliser le benchmark concurrentiel',
-                    },
-                ],
-            },
-            DANONE: {
-                kam: 'Julien Moreau',
-                sponsor: 'Claire Fontaine',
-                actions: [
-                    {
-                        id: generateId(),
-                        action: 'Lancement gamme bio premium',
-                        responsible: 'Julien Moreau',
-                        deadline: '2026-06-01',
-                        progress: 55,
-                        nextAction: 'Valider le packaging final avec le marketing',
-                    },
-                    {
-                        id: generateId(),
-                        action: 'Négociation référencement GMS',
-                        responsible: 'Amandine Roche',
-                        deadline: '2026-04-30',
-                        progress: 30,
-                        nextAction: 'Préparer la grille tarifaire pour Carrefour',
-                    },
-                    {
-                        id: generateId(),
-                        action: 'Plan promotion été 2026',
-                        responsible: 'Julien Moreau',
-                        deadline: '2026-05-15',
-                        progress: 10,
-                        nextAction: 'Rédiger le brief créatif',
-                    },
-                ],
-            },
             PROSOL: {
-                kam: 'Marie Lambert',
-                sponsor: 'Éric Vasseur',
+                kam: 'Victor Sanson',
+                sponsor: 'JÏZ',
+                businessMetrics: { caRealise: 200000, caCible: 700000, margeBrute: 250000 },
+                commercialDynamics: { rdvConquete: 2, opportunites: 1 },
                 actions: [
-                    {
-                        id: generateId(),
-                        action: 'Extension réseau Grand Frais Île-de-France',
-                        responsible: 'Marie Lambert',
-                        deadline: '2026-07-01',
-                        progress: 65,
-                        nextAction: 'Signer le bail du point de vente Vincennes',
-                    },
-                    {
-                        id: generateId(),
-                        action: 'Digitalisation parcours client',
-                        responsible: 'Thibault Perrin',
-                        deadline: '2026-04-20',
-                        progress: 85,
-                        nextAction: 'Tester la V2 du click & collect',
-                    },
-                    {
-                        id: generateId(),
-                        action: 'Partenariat producteurs locaux',
-                        responsible: 'Marie Lambert',
-                        deadline: '2026-03-18',
-                        progress: 45,
-                        nextAction: 'Organiser les audits qualité fournisseurs',
-                    },
-                ],
+                    { id: generateId(), action: 'Présentation Social Ads local avec DP', responsible: 'Victor Sanson', deadline: '2026-04-20', progress: 50, nextAction: 'Intégration kit ouverture' },
+                    { id: generateId(), action: 'RDV avec DMK Grand Frais', responsible: 'Stéphanie', deadline: '2026-04-25', progress: 20, nextAction: 'Préparer pitch L\'Uzyne' },
+                    { id: generateId(), action: 'Business Review', responsible: 'Victor Sanson', deadline: '2026-06-05', progress: 0, nextAction: 'Fixer date avec B. Delorme' }
+                ]
+            },
+            CCEP: {
+                kam: 'À définir',
+                sponsor: 'JÏZ',
+                businessMetrics: { caRealise: 0, caCible: 1000000, margeBrute: 300000 },
+                commercialDynamics: { rdvConquete: 4, opportunites: 2 },
+                actions: [
+                    { id: generateId(), action: 'Sécurisation parfaite des projets en cours', responsible: 'KAM', deadline: '2026-04-30', progress: 80, nextAction: 'Point hebdo' },
+                    { id: generateId(), action: 'Cartographie organisation / décideurs', responsible: 'KAM', deadline: '2026-05-15', progress: 30, nextAction: 'Identifier circuit CHR' },
+                    { id: generateId(), action: 'Renforcer présence terrain', responsible: 'KAM', deadline: '2026-06-01', progress: 40, nextAction: 'Tournée terrain' }
+                ]
             },
             KRONENBOURG: {
-                kam: 'Antoine Girard',
-                sponsor: 'Isabelle Morel',
+                kam: 'Stéphanie Perret',
+                sponsor: 'Elliot Brame',
+                businessMetrics: { caRealise: 370000, caCible: 1200000, margeBrute: 370000 },
+                commercialDynamics: { rdvConquete: 3, opportunites: 3 },
                 actions: [
-                    {
-                        id: generateId(),
-                        action: 'Lancement 1664 Blanc édition limitée',
-                        responsible: 'Antoine Girard',
-                        deadline: '2026-05-20',
-                        progress: 80,
-                        nextAction: 'Confirmer les volumes avec la production',
-                    },
-                    {
-                        id: generateId(),
-                        action: 'Campagne sponsoring Euro 2026',
-                        responsible: 'Léa Dubois',
-                        deadline: '2026-06-10',
-                        progress: 50,
-                        nextAction: 'Finaliser la sélection des stades partenaires',
-                    },
-                    {
-                        id: generateId(),
-                        action: 'Optimisation supply chain CHR',
-                        responsible: 'Antoine Girard',
-                        deadline: '2026-03-15',
-                        progress: 90,
-                        nextAction: 'Déployer le nouveau système de commande',
-                    },
-                ],
+                    { id: generateId(), action: 'Rencontrer les postes cross-catégorie', responsible: 'ALL', deadline: '2026-03-31', progress: 60, nextAction: 'Chercher 3 nouveaux briefs' },
+                    { id: generateId(), action: 'Faire resigner TT avec le TDF', responsible: 'SPE / MXS', deadline: '2026-06-30', progress: 40, nextAction: 'Préparer offre 2027' },
+                    { id: generateId(), action: 'Sécuriser le contrat de collabo exclusif', responsible: 'SPE/CDI/EBR', deadline: '2026-12-31', progress: 10, nextAction: 'Démarrer roadmap' }
+                ]
             },
-        },
+            MAIF: {
+                kam: 'Robin',
+                sponsor: 'Fred',
+                businessMetrics: { caRealise: 122600, caCible: 250000, margeBrute: 125000 },
+                commercialDynamics: { rdvConquete: 5, opportunites: 2 },
+                actions: [
+                    { id: generateId(), action: 'RDV UZYNE', responsible: 'Robin', deadline: '2026-03-31', progress: 100, nextAction: 'Redirection vers décisionnaire' },
+                    { id: generateId(), action: 'Intégrer brief global', responsible: 'Robin / Vincent', deadline: '2026-06-30', progress: 30, nextAction: 'Collaborer sur 1 opé' },
+                    { id: generateId(), action: 'Préparer sortie de Sport Market', responsible: 'Robin', deadline: '2026-05-30', progress: 50, nextAction: 'Reco commune' }
+                ]
+            },
+            DANONE: {
+                kam: 'Coline Orsseaud',
+                sponsor: 'Fred',
+                businessMetrics: { caRealise: 0, caCible: 800000, margeBrute: 280000 },
+                commercialDynamics: { rdvConquete: 2, opportunites: 1 },
+                actions: [
+                    { id: generateId(), action: 'ROI CIRCANA', responsible: 'Coline', deadline: '2026-04-30', progress: 20, nextAction: 'Lancer étude' },
+                    { id: generateId(), action: 'ONE TEAM (Christelle Cholet)', responsible: 'Coline', deadline: '2026-04-30', progress: 40, nextAction: 'Visite POP Store' },
+                    { id: generateId(), action: 'Yaourt / Cooptation', responsible: 'Coline', deadline: '2026-06-30', progress: 10, nextAction: 'Identifier contacts' },
+                    { id: generateId(), action: 'ACHATS', responsible: 'Coline', deadline: '2026-05-31', progress: 0, nextAction: 'Offre One Team' }
+                ]
+            }
+        }
     };
 
     // ==========================================
@@ -151,6 +87,11 @@
 
     function generateId() {
         return 'a' + Math.random().toString(36).substr(2, 9);
+    }
+
+    function formatCurrency(num) {
+        if (!num) return '0 €';
+        return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(num);
     }
 
     /**
@@ -182,12 +123,21 @@
             if (rows && rows.length > 0) {
                 const cloudData = { accounts: {} };
                 rows.forEach(row => {
+                    const defaultAcc = DEFAULT_DATA.accounts[row.name] || {};
                     cloudData.accounts[row.name] = {
                         kam: row.kam,
                         sponsor: row.sponsor,
-                        actions: row.actions
+                        businessMetrics: row.businessMetrics || defaultAcc.businessMetrics || { caRealise: 0, caCible: 0, margeBrute: 0 },
+                        commercialDynamics: row.commercialDynamics || defaultAcc.commercialDynamics || { rdvConquete: 0, opportunites: 0 },
+                        actions: row.actions || []
                     };
                 });
+                
+                // Merge any missing defaults that weren't in DB yet
+                Object.keys(DEFAULT_DATA.accounts).forEach(name => {
+                    if (!cloudData.accounts[name]) cloudData.accounts[name] = JSON.parse(JSON.stringify(DEFAULT_DATA.accounts[name]));
+                });
+                
                 saveLocalData(cloudData); // Update cache
                 return cloudData;
             } else {
@@ -198,6 +148,8 @@
                         name: name,
                         kam: acc.kam,
                         sponsor: acc.sponsor,
+                        businessMetrics: acc.businessMetrics,
+                        commercialDynamics: acc.commercialDynamics,
                         actions: acc.actions
                     });
                 }
@@ -219,6 +171,8 @@
                 name: accountName,
                 kam: account.kam,
                 sponsor: account.sponsor,
+                businessMetrics: account.businessMetrics,
+                commercialDynamics: account.commercialDynamics,
                 actions: account.actions,
                 updated_at: new Date().toISOString()
             });
@@ -296,10 +250,6 @@
     const editAccountClose = document.getElementById('editAccountClose');
     const editAccountCancel = document.getElementById('editAccountCancel');
 
-    const exportBtn = document.getElementById('exportBtn');
-    const importBtn = document.getElementById('importBtn');
-    const importFile = document.getElementById('importFile');
-
     // ==========================================
     // RENDERING
     // ==========================================
@@ -339,6 +289,8 @@
     function renderComex() {
         const accountNames = Object.keys(data.accounts);
         let totalActions = 0, totalLate = 0, allProgressValues = [];
+        let totalCaRealise = 0, totalCaCible = 0;
+        let totalRdv = 0, totalOpps = 0;
 
         accountNames.forEach(name => {
             const account = data.accounts[name];
@@ -347,6 +299,10 @@
                 allProgressValues.push(action.progress);
                 if (isLate(action.deadline, action.progress)) totalLate++;
             });
+            totalCaRealise += (account.businessMetrics?.caRealise || 0);
+            totalCaCible += (account.businessMetrics?.caCible || 0);
+            totalRdv += (account.commercialDynamics?.rdvConquete || 0);
+            totalOpps += (account.commercialDynamics?.opportunites || 0);
         });
 
         const globalAvg = safeAverage(allProgressValues);
@@ -358,13 +314,27 @@
                 <h2>Vue d'ensemble COMEX</h2>
                 <p>Synthèse cloud synchronisée — mise à jour en temps réel</p>
             </div>
-            <div class="comex-stats">
+            
+            <div class="comex-stats-business">
+                <div class="stat-card animate-in business-card">
+                    <div class="stat-label">CA Global (Réalisé / Cible)</div>
+                    <div class="stat-value blue">${formatCurrency(totalCaRealise)} <span class="stat-target">/ ${formatCurrency(totalCaCible)}</span></div>
+                    <div class="progress-bar mt-2"><div class="progress-fill blue" style="width: ${totalCaCible ? (totalCaRealise/totalCaCible*100) : 0}%"></div></div>
+                </div>
+                <div class="stat-card animate-in business-card">
+                    <div class="stat-label">Dynamique Co. Globale</div>
+                    <div class="stat-value orange">${totalRdv} <span class="stat-target" style="font-size:0.6em; opacity:0.8;">RDV de conquête</span></div>
+                    <div class="stat-target mt-1">${totalOpps} opportunités détectées</div>
+                </div>
+            </div>
+
+            <div class="comex-stats mt-4">
                 <div class="stat-card animate-in">
                     <div class="stat-label">Comptes suivis</div>
                     <div class="stat-value blue">${accountNames.length}</div>
                 </div>
                 <div class="stat-card animate-in">
-                    <div class="stat-label">Avancement global</div>
+                    <div class="stat-label">Avancement plans d'actions</div>
                     <div class="stat-value ${globalStatus.cls}">${globalAvg}%</div>
                 </div>
                 <div class="stat-card animate-in">
@@ -376,7 +346,7 @@
                     <div class="stat-value ${totalLate > 0 ? 'red' : 'green'}">${totalLate}</div>
                 </div>
             </div>
-            <div class="comex-grid">
+            <div class="comex-grid mt-4">
         `;
 
         accountNames.forEach(name => {
@@ -384,6 +354,10 @@
             const avg = safeAverage(account.actions.map(a => a.progress));
             const status = getStatus(avg);
             const lateCount = account.actions.filter(a => isLate(a.deadline, a.progress)).length;
+            
+            const caR = account.businessMetrics?.caRealise || 0;
+            const caC = account.businessMetrics?.caCible || 0;
+            const rdv = account.commercialDynamics?.rdvConquete || 0;
 
             html += `
                 <div class="account-card status-${status.cls} animate-in" data-navigate="${escapeHtml(name)}">
@@ -391,16 +365,29 @@
                         <div class="account-name">${escapeHtml(name)}</div>
                         <span class="status-badge ${status.cls}">${status.emoji} ${status.label}</span>
                     </div>
+                    <div class="account-stats-mini border-bottom-subtle pb-2 mb-2">
+                        <div class="mini-stat">
+                            <span class="mini-stat-label">CA Réalisé</span>
+                            <span class="mini-stat-value">${formatCurrency(caR)}</span>
+                        </div>
+                        <div class="mini-stat">
+                            <span class="mini-stat-label">Cible</span>
+                            <span class="mini-stat-value">${formatCurrency(caC)}</span>
+                        </div>
+                        <div class="mini-stat">
+                            <span class="mini-stat-label">RDV Conquête</span>
+                            <span class="mini-stat-value">${rdv}</span>
+                        </div>
+                    </div>
                     <div class="account-meta">
                         <div class="meta-item"><span class="meta-label">KAM</span><span class="meta-value">${escapeHtml(account.kam)}</span></div>
                         <div class="meta-item"><span class="meta-label">Sponsor</span><span class="meta-value">${escapeHtml(account.sponsor)}</span></div>
-                        <div class="meta-item"><span class="meta-label">Actions</span><span class="meta-value">${account.actions.length}</span></div>
                     </div>
                     <div class="progress-container">
-                        <div class="progress-header"><span class="progress-label">Avancement moyen</span><span class="progress-value ${status.cls}">${avg}%</span></div>
+                        <div class="progress-header"><span class="progress-label">Avancement actions</span><span class="progress-value ${status.cls}">${avg}%</span></div>
                         <div class="progress-bar"><div class="progress-fill ${status.cls}" style="width: ${avg}%"></div></div>
                     </div>
-                    <div class="account-footer">
+                    <div class="account-footer mt-2">
                         <span>${account.actions.length} action${account.actions.length > 1 ? 's' : ''}</span>
                         <span class="late-count ${lateCount === 0 ? 'none' : ''}">${lateCount > 0 ? '⚠ ' + lateCount + ' en retard' : '✓ Aucun retard'}</span>
                     </div>
@@ -419,14 +406,16 @@
         const lateCount = account.actions.filter(a => isLate(a.deadline, a.progress)).length;
         const completedCount = account.actions.filter(a => a.progress >= 100).length;
 
+        const bm = account.businessMetrics || { caRealise:0, caCible:0, margeBrute:0 };
+        const cd = account.commercialDynamics || { rdvConquete:0, opportunites:0 };
+
         let html = `
             <div class="account-header">
                 <div class="account-header-left">
                     <h2>${escapeHtml(accountName)}</h2>
-                    <span class="status-badge ${status.cls}">${status.emoji} ${status.label}</span>
                 </div>
                 <div class="account-header-right">
-                    <button class="btn btn-ghost btn-sm" data-edit-account="${escapeHtml(accountName)}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Modifier</button>
+                    <button class="btn btn-ghost btn-sm" data-edit-account="${escapeHtml(accountName)}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Modifier KAM</button>
                     <button class="btn btn-primary btn-sm" data-add-action="${escapeHtml(accountName)}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Nouvelle action</button>
                 </div>
             </div>
@@ -434,12 +423,49 @@
                 <div class="info-chip">KAM : <strong>${escapeHtml(account.kam)}</strong></div>
                 <div class="info-chip">Sponsor : <strong>${escapeHtml(account.sponsor)}</strong></div>
             </div>
+
+            <!-- Nouveaux widgets business et dynamique -->
+            <div class="business-metrics-grid mb-4">
+                <div class="metric-block">
+                    <h4>Performance Business</h4>
+                    <div class="metric-row-edit mt-2">
+                        <div class="input-wrap">
+                            <label>CA Réalisé (€)</label>
+                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="caRealise" value="${bm.caRealise}">
+                        </div>
+                        <div class="input-wrap">
+                            <label>CA Cible (€)</label>
+                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="caCible" value="${bm.caCible}">
+                        </div>
+                        <div class="input-wrap">
+                            <label>Marge Brute (€)</label>
+                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="margeBrute" value="${bm.margeBrute}">
+                        </div>
+                    </div>
+                </div>
+                <div class="metric-block">
+                    <h4>Dynamique Commerciale</h4>
+                    <div class="metric-row-edit mt-2">
+                        <div class="input-wrap">
+                            <label>RDV Conquête</label>
+                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="commercialDynamics" data-field="rdvConquete" value="${cd.rdvConquete}">
+                        </div>
+                        <div class="input-wrap">
+                            <label>Op. Détectées</label>
+                            <input type="number" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="commercialDynamics" data-field="opportunites" value="${cd.opportunites}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="account-summary-strip">
-                <div class="summary-card"><div class="stat-label">Avancement</div><div class="stat-value ${status.cls}">${avg}%</div></div>
+                <div class="summary-card"><div class="stat-label">Avancement</div><div class="stat-value ${status.cls}">${avg}%</div><div class="text-xs text-muted mt-1">${status.label}</div></div>
                 <div class="summary-card"><div class="stat-label">Actions</div><div class="stat-value blue">${account.actions.length}</div></div>
                 <div class="summary-card"><div class="stat-label">Terminées</div><div class="stat-value green">${completedCount}</div></div>
                 <div class="summary-card"><div class="stat-label">En retard</div><div class="stat-value ${lateCount > 0 ? 'red' : 'green'}">${lateCount}</div></div>
             </div>
+            
+            <h3 class="mb-3 text-lg">Pland d'actions</h3>
             <div class="table-container">
         `;
 
@@ -520,6 +546,10 @@
             const { actionId, account, field } = e.target.dataset;
             updateActionField(account, actionId, field, e.target.value);
         }
+        if (e.target.matches('.update-metric')) {
+            const { account, parent, field } = e.target.dataset;
+            updateMetricField(account, parent, field, parseFloat(e.target.value) || 0);
+        }
     });
 
     function openAddActionModal(accountName) {
@@ -530,18 +560,21 @@
     }
 
     function closeAddActionModal() { modalOverlay.classList.remove('open'); }
-    modalClose.onclick = modalCancel.onclick = closeAddActionModal;
+    if(modalClose) modalClose.onclick = closeAddActionModal;
+    if(modalCancel) modalCancel.onclick = closeAddActionModal;
 
-    actionForm.onsubmit = async (e) => {
-        e.preventDefault();
-        const accountName = formAccountId.value;
-        const newAction = { id: generateId(), action: formAction.value.trim(), responsible: formResponsible.value.trim(), deadline: formDeadline.value, progress: 0, nextAction: formNextAction.value.trim() };
-        data.accounts[accountName].actions.push(newAction);
-        await pushAccountToSupabase(accountName);
-        saveLocalData(data);
-        closeAddActionModal();
-        render();
-    };
+    if(actionForm) {
+        actionForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const accountName = formAccountId.value;
+            const newAction = { id: generateId(), action: formAction.value.trim(), responsible: formResponsible.value.trim(), deadline: formDeadline.value, progress: 0, nextAction: formNextAction.value.trim() };
+            data.accounts[accountName].actions.push(newAction);
+            await pushAccountToSupabase(accountName);
+            saveLocalData(data);
+            closeAddActionModal();
+            render();
+        };
+    }
 
     function openEditAccountModal(accountName) {
         const account = data.accounts[accountName];
@@ -552,18 +585,21 @@
     }
 
     function closeEditAccountModal() { editAccountOverlay.classList.remove('open'); }
-    editAccountClose.onclick = editAccountCancel.onclick = closeEditAccountModal;
+    if(editAccountClose) editAccountClose.onclick = closeEditAccountModal;
+    if(editAccountCancel) editAccountCancel.onclick = closeEditAccountModal;
 
-    editAccountForm.onsubmit = async (e) => {
-        e.preventDefault();
-        const accountName = editAccountId.value;
-        data.accounts[accountName].kam = editKam.value.trim();
-        data.accounts[accountName].sponsor = editSponsor.value.trim();
-        await pushAccountToSupabase(accountName);
-        saveLocalData(data);
-        closeEditAccountModal();
-        render();
-    };
+    if(editAccountForm) {
+        editAccountForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const accountName = editAccountId.value;
+            data.accounts[accountName].kam = editKam.value.trim();
+            data.accounts[accountName].sponsor = editSponsor.value.trim();
+            await pushAccountToSupabase(accountName);
+            saveLocalData(data);
+            closeEditAccountModal();
+            render();
+        };
+    }
 
     async function updateActionField(accountName, actionId, field, value) {
         const account = data.accounts[accountName];
@@ -572,6 +608,15 @@
         await pushAccountToSupabase(accountName);
         saveLocalData(data);
         renderTabs();
+    }
+
+    async function updateMetricField(accountName, parentKey, fieldKey, value) {
+        const account = data.accounts[accountName];
+        if(!account[parentKey]) account[parentKey] = {};
+        account[parentKey][fieldKey] = value;
+        await pushAccountToSupabase(accountName);
+        saveLocalData(data);
+        renderTabs(); // refresh badges if needed (though metrics don't affect badges right now, but good practice)
     }
 
     async function deleteAction(accountName, actionId) {
@@ -587,7 +632,7 @@
     // ==========================================
 
     async function init() {
-        headerDate.textContent = formatDateHeader();
+        if(headerDate) headerDate.textContent = formatDateHeader();
         data = await syncFromSupabase();
         render();
     }
