@@ -525,9 +525,9 @@
                 const late = isLate(action.deadline, action.progress);
                 html += `
                     <tr>
-                        <td style="font-weight:500;">${escapeHtml(action.action)}</td>
-                        <td>${escapeHtml(action.responsible)}</td>
-                        <td><span class="deadline ${late ? 'late' : ''}">${formatDate(action.deadline)}</span></td>
+                        <td style="font-weight:500;"><input type="text" class="inline-input" style="font-weight:500; width: 100%; min-width: 200px;" value="${escapeHtml(action.action)}" data-action-id="${action.id}" data-account="${escapeHtml(accountName)}" data-field="action"></td>
+                        <td><input type="text" class="inline-input" style="width: 100%; min-width: 100px;" value="${escapeHtml(action.responsible)}" data-action-id="${action.id}" data-account="${escapeHtml(accountName)}" data-field="responsible"></td>
+                        <td><input type="date" class="inline-input ${late ? 'late' : ''}" style="width: auto; min-width: 120px;" value="${action.deadline || ''}" data-action-id="${action.id}" data-account="${escapeHtml(accountName)}" data-field="deadline"></td>
                         <td>
                             <div class="inline-slider-container">
                                 <input type="range" class="inline-slider ${actionStatus.cls}" min="0" max="100" step="5" value="${action.progress}" style="--progress: ${action.progress}%" data-action-id="${action.id}" data-account="${escapeHtml(accountName)}" data-field="progress">
@@ -653,6 +653,7 @@
         await pushAccountToSupabase(accountName);
         saveLocalData(data);
         renderTabs();
+        if (field === 'deadline') renderAccount(accountName);
     }
 
     async function updateMetricField(accountName, parentKey, fieldKey, value) {
