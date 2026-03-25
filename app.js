@@ -25,57 +25,61 @@
             PROSOL: {
                 kam: 'Victor Sanson (Field & People)',
                 sponsor: 'JÏZ',
-                businessMetrics: { caRealise: 200000, caCible: 700000, margeBrute: 250000 },
-                commercialDynamics: { rdvConquete: 2, opportunites: 1 },
+                businessMetrics: { caRealise: 0, caCible: 700000, margeBrute: 250000 },
+                commercialDynamics: { rdvConquete: 0, opportunites: 0 },
                 actions: [
-                    { id: generateId(), action: 'Présentation Social Ads local avec DP', responsible: 'Victor Sanson', deadline: '2026-04-20', progress: 50, nextAction: 'Intégration kit ouverture' },
-                    { id: generateId(), action: 'RDV avec DMK Grand Frais', responsible: 'Stéphanie', deadline: '2026-04-25', progress: 20, nextAction: 'Préparer pitch L\'Uzyne' },
-                    { id: generateId(), action: 'Business Review', responsible: 'Victor Sanson', deadline: '2026-06-05', progress: 0, nextAction: 'Fixer date avec B. Delorme' }
+                    { id: generateId(), action: 'Présentation Social Ads local avec DP', responsible: 'Victor Sanson', deadline: '2026-04-20', progress: 30, nextAction: 'Intégration de DP dans le kit ouverture' },
+                    { id: generateId(), action: 'RDV avec DMK Grand Frais (Sigrid Baron)', responsible: 'Stéphanie (L\'Uzyne)', deadline: '2026-04-20', progress: 10, nextAction: 'Intégration de DP dans le kit ouverture' },
+                    { id: generateId(), action: 'Business Review – Rencontre avec Bénédicte Delorme', responsible: 'Victor Sanson', deadline: '2026-06-05', progress: 0, nextAction: 'Institutionnaliser la relation au-delà de l\'opérationnel' }
                 ]
             },
             CCEP: {
                 kam: 'À définir',
                 sponsor: 'JÏZ',
                 businessMetrics: { caRealise: 0, caCible: 1000000, margeBrute: 300000 },
-                commercialDynamics: { rdvConquete: 4, opportunites: 2 },
+                commercialDynamics: { rdvConquete: 0, opportunites: 0 },
                 actions: [
-                    { id: generateId(), action: 'Sécurisation parfaite des projets en cours', responsible: 'KAM', deadline: '2026-04-30', progress: 80, nextAction: 'Point hebdo' },
-                    { id: generateId(), action: 'Cartographie organisation / décideurs', responsible: 'KAM', deadline: '2026-05-15', progress: 30, nextAction: 'Identifier circuit CHR' },
-                    { id: generateId(), action: 'Renforcer présence terrain', responsible: 'KAM', deadline: '2026-06-01', progress: 40, nextAction: 'Tournée terrain' }
+                    { id: generateId(), action: 'Sécurisation parfaite des projets en cours', responsible: 'KAM', deadline: '2026-04-30', progress: 50, nextAction: '' },
+                    { id: generateId(), action: 'Cartographie organisation / décideurs', responsible: 'KAM', deadline: '2026-05-15', progress: 20, nextAction: '' },
+                    { id: generateId(), action: 'Identification leviers alternatifs (CHR, circuits spécialisés)', responsible: 'KAM', deadline: '2026-05-30', progress: 20, nextAction: '' },
+                    { id: generateId(), action: 'Présence terrain renforcée', responsible: 'KAM', deadline: '2026-06-01', progress: 30, nextAction: '' }
                 ]
             },
             KRONENBOURG: {
                 kam: 'Stéphanie PERRET',
                 sponsor: 'Elliot BRAME',
                 businessMetrics: { caRealise: 370000, caCible: 1200000, margeBrute: 370000 },
-                commercialDynamics: { rdvConquete: 3, opportunites: 3 },
+                commercialDynamics: { rdvConquete: 0, opportunites: 0 },
                 actions: [
-                    { id: generateId(), action: 'Rencontrer les postes cross-catégorie', responsible: 'ALL', deadline: '2026-03-31', progress: 60, nextAction: 'Chercher 3 nouveaux briefs' },
-                    { id: generateId(), action: 'Faire resigner TT avec le TDF', responsible: 'SPE / MXS', deadline: '2026-06-30', progress: 40, nextAction: 'Préparer offre 2027' },
-                    { id: generateId(), action: 'Sécuriser le contrat de collabo exclusif', responsible: 'SPE/CDI/EBR', deadline: '2026-12-31', progress: 10, nextAction: 'Démarrer roadmap' }
+                    { id: generateId(), action: 'Rencontrer les postes cross-catégorie (M. Bec, T. Guery, C. Demanges)', responsible: 'ALL', deadline: '2026-03-31', progress: 40, nextAction: 'Aller chercher 3 nouveaux briefs' },
+                    { id: generateId(), action: 'Faire resigner TT avec le TDF', responsible: 'SPE / MXS', deadline: '2026-06-30', progress: 20, nextAction: 'Garantie CA & MB à LT' },
+                    { id: generateId(), action: 'Sécuriser le contrat de collaboration exclusif', responsible: 'SPE/CDI/EBR', deadline: '2026-12-31', progress: 10, nextAction: 'Contrat d\'activation pluriannuel' }
                 ]
             },
             MAIF: {
                 kam: 'Robin',
                 sponsor: 'Fred',
                 businessMetrics: { caRealise: 122600, caCible: 250000, margeBrute: 125000 },
-                commercialDynamics: { rdvConquete: 5, opportunites: 2 },
+                commercialDynamics: { rdvConquete: 0, opportunites: 0 },
                 actions: [
-                    { id: generateId(), action: 'RDV UZYNE', responsible: 'Robin', deadline: '2026-03-31', progress: 100, nextAction: 'Redirection vers décisionnaire' },
+                    { id: generateId(), action: 'RDV UZYNE', responsible: 'Robin', deadline: '2026-03-31', progress: 80, nextAction: 'Faire parler / Redirection' },
                     { id: generateId(), action: 'Intégrer brief global', responsible: 'Robin / Vincent', deadline: '2026-06-30', progress: 30, nextAction: 'Collaborer sur 1 opé' },
-                    { id: generateId(), action: 'Préparer sortie de Sport Market', responsible: 'Robin', deadline: '2026-05-30', progress: 50, nextAction: 'Reco commune' }
+                    { id: generateId(), action: 'Prise de RDV avec pôle socle + corpo', responsible: 'Robin', deadline: '2026-04-15', progress: 10, nextAction: '' },
+                    { id: generateId(), action: 'Détecter opportunités si salons, events spé, festival…', responsible: 'Robin', deadline: '2026-05-15', progress: 20, nextAction: '' },
+                    { id: generateId(), action: 'Préparer sortie de Sport Market (reco commune)', responsible: 'Robin', deadline: '2026-06-01', progress: 50, nextAction: '' }
                 ]
             },
             DANONE: {
                 kam: 'Coline Orsseaud',
                 sponsor: 'Fred',
                 businessMetrics: { caRealise: 0, caCible: 800000, margeBrute: 280000 },
-                commercialDynamics: { rdvConquete: 2, opportunites: 1 },
+                commercialDynamics: { rdvConquete: 0, opportunites: 0 },
                 actions: [
-                    { id: generateId(), action: 'ROI CIRCANA', responsible: 'Coline', deadline: '2026-04-30', progress: 20, nextAction: 'Lancer étude' },
-                    { id: generateId(), action: 'ONE TEAM (Christelle Cholet)', responsible: 'Coline', deadline: '2026-04-30', progress: 40, nextAction: 'Visite POP Store' },
-                    { id: generateId(), action: 'Yaourt / Cooptation', responsible: 'Coline', deadline: '2026-06-30', progress: 10, nextAction: 'Identifier contacts' },
-                    { id: generateId(), action: 'ACHATS', responsible: 'Coline', deadline: '2026-05-31', progress: 0, nextAction: 'Offre One Team' }
+                    { id: generateId(), action: 'ROI CIRCANA', responsible: 'Coline', deadline: '2026-04-30', progress: 20, nextAction: 'Preuve des ROI' },
+                    { id: generateId(), action: 'ONE TEAM – Christelle Cholet', responsible: 'Coline (Fred)', deadline: '2026-04-30', progress: 40, nextAction: 'Projet 360' },
+                    { id: generateId(), action: 'Yaourt / Cooptation', responsible: 'Coline', deadline: '2026-06-30', progress: 10, nextAction: 'Nouvelles marques' },
+                    { id: generateId(), action: 'ACHATS', responsible: '?', deadline: '2026-05-31', progress: 0, nextAction: 'Offre One Team et massification' },
+                    { id: generateId(), action: 'USE CASE fait pour eux + L\'organigramme et leurs agences', responsible: 'Coline', deadline: '2026-05-15', progress: 50, nextAction: '' }
                 ]
             }
         }
