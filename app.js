@@ -506,7 +506,7 @@
                             <input type="text" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="caCible" value="${formatNumber(bm.caCible)}">
                         </div>
                         <div class="input-wrap">
-                            <label>Marge Brute (€)</label>
+                            <label>Marge Cible (€)</label>
                             <input type="text" class="block-input update-metric" data-account="${escapeHtml(accountName)}" data-parent="businessMetrics" data-field="margeBrute" value="${formatNumber(bm.margeBrute)}">
                         </div>
                     </div>
