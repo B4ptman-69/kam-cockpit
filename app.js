@@ -20,6 +20,14 @@
 
     const STORAGE_KEY = 'kam_cockpit_data';
 
+    const ACCOUNT_ICONS = {
+        'PROSOL': '🛒',
+        'CCEP': '🥤',
+        'KRONENBOURG': '🍻',
+        'MAIF': '🛡️',
+        'DANONE': '🥛'
+    };
+
     const DEFAULT_DATA = {
         accounts: {
             PROSOL: {
@@ -320,7 +328,7 @@
             const status = getStatus(avg);
             html += `
                 <button class="tab ${currentTab === name ? 'active' : ''}" data-tab="${escapeHtml(name)}">
-                    ${escapeHtml(name)}
+                    ${ACCOUNT_ICONS[name] || '🏢'} ${escapeHtml(name)}
                     <span class="tab-badge ${status.cls}">${status.emoji}</span>
                 </button>
             `;
@@ -404,7 +412,7 @@
             html += `
                 <div class="account-card status-${status.cls} animate-in" data-navigate="${escapeHtml(name)}">
                     <div class="account-card-header">
-                        <div class="account-name">${escapeHtml(name)}</div>
+                        <div class="account-name">${ACCOUNT_ICONS[name] || '🏢'} ${escapeHtml(name)}</div>
                         <span class="status-badge ${status.cls}">${status.emoji} ${status.label}</span>
                     </div>
                     <div class="account-stats-mini border-bottom-subtle pb-2 mb-2">
@@ -454,7 +462,7 @@
         let html = `
             <div class="account-header">
                 <div class="account-header-left">
-                    <h2>${escapeHtml(accountName)}</h2>
+                    <h2>${ACCOUNT_ICONS[accountName] || '🏢'} ${escapeHtml(accountName)}</h2>
                 </div>
                 <div class="account-header-right">
                     <button class="btn btn-ghost btn-sm" data-edit-account="${escapeHtml(accountName)}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Modifier KAM</button>
