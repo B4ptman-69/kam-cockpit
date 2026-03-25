@@ -23,15 +23,8 @@
     const DEFAULT_DATA = {
         accounts: {
             PROSOL: {
-                kam: 'Victor Sanson',
+                kam: 'Victor Sanson (Field & People)',
                 sponsor: 'JÏZ',
-                vision: "Priorités business : Augmentation massive du nombre de magasins physiques avec au moins 36 ouvertures prévues en 2026 (hors Grand Frais).\nTransformation : Rachat en cours par le fonds américain APOLLO.\nQuestion clé : Comment devenir indispensable via le modèle 'One Stop Shop' pour faciliter leur quotidien ?",
-                strategie: "1. Levier 'Ouverture' : Créer un pack d'ouverture standardisé et duplicable incluant du digital (Social Ads local).\n2. Maillage relationnel : Sortir de l'isolement opérationnel en rencontrant les directions marketing (Grand Frais, Fresh).\n3. Synergie Groupe : Collaboration étroite avec Stéphanie Perret (L'Uzyne) pour l'approche Grand Frais.",
-                actions90j: [
-                    "Enrichir le kit d'ouverture et le structurer pour valider l'offre technique.",
-                    "Déjeuner avec Sigrid Baron (DMK Grand Frais) pour l'aspect relationnel.",
-                    "Rencontre avec Bénédicte Delorme (DMK Fresh) pour sécuriser le périmètre actuel."
-                ],
                 businessMetrics: { caRealise: 200000, caCible: 700000, margeBrute: 250000 },
                 commercialDynamics: { rdvConquete: 2, opportunites: 1 },
                 actions: [
@@ -43,13 +36,6 @@
             CCEP: {
                 kam: 'À définir',
                 sponsor: 'JÏZ',
-                vision: "Client opérationnel en phase de montée en confiance\nPriorité marché : sell-in (pression distributeurs)\nContexte de négociations tendues GMS\nRéférence concurrentielle : agence réalisant ~3M€ chez eux",
-                strategie: "Passer de fournisseur opérationnel à partenaire stratégique structurant.",
-                actions90j: [
-                    "Sécurisation parfaite des projets en cours",
-                    "Cartographie organisation / décideurs",
-                    "Identification leviers alternatifs (CHR, circuits spécialisés)"
-                ],
                 businessMetrics: { caRealise: 0, caCible: 1000000, margeBrute: 300000 },
                 commercialDynamics: { rdvConquete: 4, opportunites: 2 },
                 actions: [
@@ -61,13 +47,6 @@
             KRONENBOURG: {
                 kam: 'Stéphanie PERRET',
                 sponsor: 'Elliot BRAME',
-                vision: "Priorités business : 1664 / TOURTEL TWIST / GRIMBERGEN — Recentrer le poids d'action sur les refs « core business »\nPressions marché : Négo commerciales GMS compliquées ; Concurrence accrue au sein de la catégorie\nTransformation : Tourtel Twist, Brooklyn (plan strat 3 ans), Somersby",
-                strategie: "1. Devenir agence Sociale de Tourtel Twist\n2. Conquérir 1664 (1 lead mini)\n3. Shopper global",
-                actions90j: [
-                    "Meetings cross-catégorie",
-                    "Valider les recos DP Tourtel Twist & Brooklyn",
-                    "Sécuriser la collaboration TDF 2027 & +"
-                ],
                 businessMetrics: { caRealise: 370000, caCible: 1200000, margeBrute: 370000 },
                 commercialDynamics: { rdvConquete: 3, opportunites: 3 },
                 actions: [
@@ -79,13 +58,6 @@
             MAIF: {
                 kam: 'Robin',
                 sponsor: 'Fred',
-                vision: "Priorités business : Acteur engagé et reconnu. Vertueux sur le plan humain et RSE.\nPressions marché : +2,3% — concurrence accrue des néo-assurances.\nTransformation : Se détacher de l'assurance classique, logique de prévention.",
-                strategie: "1. Creuser la partie influence.\n2. Travailler avec les autres entités ex: Maif Social Club.\n3. Développer la cooptation Event, être agence 360.",
-                actions90j: [
-                    "Prise de RDV avec pôle socle + corpo (temps 2)",
-                    "Détecter opportunités si salons, events spé, festival…",
-                    "Préparer sortie de Sport Market en préparant une reco commune"
-                ],
                 businessMetrics: { caRealise: 122600, caCible: 250000, margeBrute: 125000 },
                 commercialDynamics: { rdvConquete: 5, opportunites: 2 },
                 actions: [
@@ -97,13 +69,6 @@
             DANONE: {
                 kam: 'Coline Orsseaud',
                 sponsor: 'Fred',
-                vision: "Priorités business : Business tendu, attendus sur des strats ROI. Négociation GSA dure.\nOpportunités : Face à Nestlé Water, Sport Shopper, écosystème partenaires.\nQuestion clé : Offre ONE TEAM sans couture.",
-                strategie: "1. Réussite et qualité d'exécution\n2. Étude ROI CIRCANA\n3. Se faire identifier sur le One Team — décrocher un projet 360\n4. Les Yaourts",
-                actions90j: [
-                    "USE CASE fait pour eux + L'organigramme et leurs agences",
-                    "À compléter",
-                    "À compléter"
-                ],
                 businessMetrics: { caRealise: 0, caCible: 800000, margeBrute: 280000 },
                 commercialDynamics: { rdvConquete: 2, opportunites: 1 },
                 actions: [
@@ -162,9 +127,6 @@
                     cloudData.accounts[row.name] = {
                         kam: row.kam,
                         sponsor: row.sponsor,
-                        vision: row.vision || defaultAcc.vision || "",
-                        strategie: row.strategie || defaultAcc.strategie || "",
-                        actions90j: row.actions90j || defaultAcc.actions90j || ["", "", ""],
                         businessMetrics: row.businessMetrics || defaultAcc.businessMetrics || { caRealise: 0, caCible: 0, margeBrute: 0 },
                         commercialDynamics: row.commercialDynamics || defaultAcc.commercialDynamics || { rdvConquete: 0, opportunites: 0 },
                         actions: row.actions || []
@@ -186,9 +148,6 @@
                         name: name,
                         kam: acc.kam,
                         sponsor: acc.sponsor,
-                        vision: acc.vision,
-                        strategie: acc.strategie,
-                        actions90j: acc.actions90j,
                         businessMetrics: acc.businessMetrics,
                         commercialDynamics: acc.commercialDynamics,
                         actions: acc.actions
@@ -212,9 +171,6 @@
                 name: accountName,
                 kam: account.kam,
                 sponsor: account.sponsor,
-                vision: account.vision,
-                strategie: account.strategie,
-                actions90j: account.actions90j,
                 businessMetrics: account.businessMetrics,
                 commercialDynamics: account.commercialDynamics,
                 actions: account.actions,
@@ -467,35 +423,6 @@
                 <div class="info-chip">KAM : <strong>${escapeHtml(account.kam)}</strong></div>
                 <div class="info-chip">Sponsor : <strong>${escapeHtml(account.sponsor)}</strong></div>
             </div>
-            
-            <!-- Nouvelles sections Stratégiques -->
-            <div class="strategy-grid mb-4">
-                <div class="metric-block">
-                    <h4>Vision client & enjeux 2026</h4>
-                    <textarea class="block-input update-account-field" data-account="${escapeHtml(accountName)}" data-field="vision" rows="4">${escapeHtml(account.vision)}</textarea>
-                </div>
-                <div class="metric-block">
-                    <h4>Stratégie de croissance</h4>
-                    <textarea class="block-input update-account-field" data-account="${escapeHtml(accountName)}" data-field="strategie" rows="4">${escapeHtml(account.strategie)}</textarea>
-                </div>
-                <div class="metric-block" style="grid-column: 1 / -1;">
-                    <h4>Les 3 actions dans les 90 jours</h4>
-                    <div class="actions90-grid mt-2">
-                        <div class="input-wrap">
-                            <label>Action 1</label>
-                            <input type="text" class="block-input update-action90" data-account="${escapeHtml(accountName)}" data-index="0" value="${escapeHtml(account.actions90j[0] || '')}">
-                        </div>
-                         <div class="input-wrap">
-                            <label>Action 2</label>
-                            <input type="text" class="block-input update-action90" data-account="${escapeHtml(accountName)}" data-index="1" value="${escapeHtml(account.actions90j[1] || '')}">
-                        </div>
-                         <div class="input-wrap">
-                            <label>Action 3</label>
-                            <input type="text" class="block-input update-action90" data-account="${escapeHtml(accountName)}" data-index="2" value="${escapeHtml(account.actions90j[2] || '')}">
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Nouveaux widgets business et dynamique -->
             <div class="business-metrics-grid mb-4">
@@ -623,14 +550,6 @@
             const { account, parent, field } = e.target.dataset;
             updateMetricField(account, parent, field, parseFloat(e.target.value) || 0);
         }
-        if (e.target.matches('.update-account-field')) {
-            const { account, field } = e.target.dataset;
-            updateAccountField(account, field, e.target.value);
-        }
-        if (e.target.matches('.update-action90')) {
-            const { account, index } = e.target.dataset;
-            updateAction90Field(account, parseInt(index, 10), e.target.value);
-        }
     });
 
     function openAddActionModal(accountName) {
@@ -697,22 +616,7 @@
         account[parentKey][fieldKey] = value;
         await pushAccountToSupabase(accountName);
         saveLocalData(data);
-        renderTabs();
-    }
-
-    async function updateAccountField(accountName, fieldKey, value) {
-        const account = data.accounts[accountName];
-        account[fieldKey] = value;
-        await pushAccountToSupabase(accountName);
-        saveLocalData(data);
-    }
-
-    async function updateAction90Field(accountName, index, value) {
-        const account = data.accounts[accountName];
-        if(!account.actions90j) account.actions90j = ["", "", ""];
-        account.actions90j[index] = value;
-        await pushAccountToSupabase(accountName);
-        saveLocalData(data);
+        renderTabs(); // refresh badges if needed (though metrics don't affect badges right now, but good practice)
     }
 
     async function deleteAction(accountName, actionId) {

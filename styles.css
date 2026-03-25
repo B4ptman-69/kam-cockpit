@@ -812,24 +812,6 @@ tr:hover {
    Business & Commercial Metrics
    ======================================== */
 
-.strategy-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-.actions90-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
-
-textarea.block-input {
-    resize: vertical;
-    min-height: 80px;
-    line-height: 1.4;
-}
-
 .business-metrics-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
