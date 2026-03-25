@@ -729,8 +729,11 @@
         const segments = actions.map(a => {
             if (a.progress >= 100) return '<div class="timeline-segment done"></div>';
             if (isLate(a.deadline, a.progress)) return '<div class="timeline-segment late"></div>';
-            if (a.progress > 0) return '<div class="timeline-segment progress"></div>';
-            return '<div class="timeline-segment todo"></div>';
+            if (a.progress === 0) return '<div class="timeline-segment todo"></div>';
+            const s = getStatus(a.progress);
+            if (s.cls === 'red') return '<div class="timeline-segment late"></div>';
+            if (s.cls === 'orange') return '<div class="timeline-segment progress"></div>';
+            return '<div class="timeline-segment done"></div>';
         }).join('');
         return `<div class="action-timeline-mini">${segments}</div>`;
     }
