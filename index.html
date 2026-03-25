@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="config.js"></script>
 </head>
 <body>
@@ -77,6 +78,24 @@
 
         <!-- Content Area -->
         <main class="content" id="contentArea">
+            <div id="skeletonLoader" class="skeleton-container" style="padding: 20px 0;">
+                <div class="skeleton-line" style="width: 250px; height: 32px; margin-bottom: 8px;"></div>
+                <div class="skeleton-line" style="width: 400px; height: 16px; margin-bottom: 32px;"></div>
+                <div class="comex-stats-business skeleton-section">
+                    <div class="skeleton-box" style="height: 120px;"></div>
+                    <div class="skeleton-box" style="height: 120px;"></div>
+                </div>
+                <div class="comex-stats skeleton-section" style="margin-top: 24px;">
+                    <div class="skeleton-box" style="height: 80px;"></div>
+                    <div class="skeleton-box" style="height: 80px;"></div>
+                    <div class="skeleton-box" style="height: 80px;"></div>
+                    <div class="skeleton-box" style="height: 80px;"></div>
+                </div>
+                <div class="comex-grid" style="margin-top: 24px;">
+                    <div class="skeleton-box" style="height: 250px;"></div>
+                    <div class="skeleton-box" style="height: 250px;"></div>
+                </div>
+            </div>
             <!-- Dynamic content rendered by JS -->
         </main>
     </div>

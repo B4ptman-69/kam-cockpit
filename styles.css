@@ -1078,22 +1078,141 @@ tr:hover {
 }
 
 /* ========================================
-   Animations
+   Animations & "WOW" Effects
    ======================================== */
 @keyframes countUp {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
 .animate-in {
     animation: countUp 400ms ease forwards;
 }
 
+/* Skeleton Loaders */
+.skeleton-container {
+    width: 100%;
+}
+.skeleton-line, .skeleton-box {
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+}
+.skeleton-box {
+    border-radius: var(--radius-lg);
+}
+.skeleton-line::after, .skeleton-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+    animation: shimmer 1.5s infinite;
+}
+[data-theme="light"] .skeleton-line::after, [data-theme="light"] .skeleton-box::after {
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent);
+}
+
+/* 3D Magnetic Card Effects */
+.account-card-3d-wrapper {
+    perspective: 1000px;
+    width: 100%;
+    height: 100%;
+}
+.account-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s;
+}
+
+.account-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: var(--radius-xl);
+    pointer-events: none;
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.08) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10;
+}
+[data-theme="light"] .account-card::before {
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0,0,0,0.06) 0%, transparent 60%);
+}
+.account-card:hover::before {
+    opacity: 1;
+}
+
+/* Dynamic Card Glows */
+.account-card.status-green { box-shadow: 0 0 20px var(--status-green-bg); }
+.account-card.status-orange { box-shadow: 0 0 20px var(--status-orange-bg); }
+.account-card.status-red { box-shadow: 0 0 20px var(--status-red-bg); }
+
+/* SVG Circular Progress */
+.radial-progress-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+}
+.radial-progress-svg {
+    transform: rotate(-90deg);
+}
+.radial-progress-bg {
+    fill: none;
+    stroke: var(--border-subtle);
+    stroke-width: 8;
+}
+.radial-progress-bar {
+    fill: none;
+    stroke: url(#caGradient);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.radial-progress-text {
+    position: absolute;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Sparklines Timeline */
+.action-timeline-mini {
+    display: flex;
+    gap: 4px;
+    margin-top: 10px;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.timeline-segment {
+    flex: 1;
+    background: var(--bg-input);
+    transition: background 0.3s;
+}
+.timeline-segment.done { background: var(--status-green); opacity: 0.8; }
+.timeline-segment.progress { background: var(--status-orange); opacity: 0.8; }
+.timeline-segment.todo { background: var(--border-subtle); }
+.timeline-segment.late { background: var(--status-red); opacity: 0.8; }
+
 /* Stagger animations */
-.comex-grid .account-card:nth-child(1) { animation-delay: 50ms; }
-.comex-grid .account-card:nth-child(2) { animation-delay: 100ms; }
-.comex-grid .account-card:nth-child(3) { animation-delay: 150ms; }
-.comex-grid .account-card:nth-child(4) { animation-delay: 200ms; }
+.comex-grid .account-card-3d-wrapper:nth-child(1) .account-card { animation-delay: 50ms; }
+.comex-grid .account-card-3d-wrapper:nth-child(2) .account-card { animation-delay: 100ms; }
+.comex-grid .account-card-3d-wrapper:nth-child(3) .account-card { animation-delay: 150ms; }
+.comex-grid .account-card-3d-wrapper:nth-child(4) .account-card { animation-delay: 200ms; }
 
 /* ========================================
    Responsive

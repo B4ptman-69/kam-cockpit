@@ -308,6 +308,7 @@
         renderTabs();
         if (currentTab === 'comex') renderComex();
         else renderAccount(currentTab);
+        setTimeout(initAnimations, 0);
     }
 
     function renderTabs() {
@@ -366,34 +367,49 @@
             </div>
             
             <div class="comex-stats-business">
-                <div class="stat-card animate-in business-card">
-                    <div class="stat-label">CA Global (Réalisé / Cible)</div>
-                    <div class="stat-value blue">${formatCurrency(totalCaRealise)} <span class="stat-target">/ ${formatCurrency(totalCaCible)}</span></div>
-                    <div class="progress-bar mt-2"><div class="progress-fill blue" style="width: ${totalCaCible ? (totalCaRealise/totalCaCible*100) : 0}%"></div></div>
+                <div class="stat-card animate-in business-card" style="display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <div class="stat-label">CA Global (Réalisé / Cible)</div>
+                        <div class="stat-value blue" data-countup="${totalCaRealise}">0</div>
+                        <div class="stat-target mt-1">Objectif: ${formatCurrency(totalCaCible)}</div>
+                    </div>
+                    <div class="radial-progress-container">
+                        <svg class="radial-progress-svg" viewBox="0 0 100 100">
+                            <defs>
+                                <linearGradient id="caGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#8b5cf6" />
+                                    <stop offset="100%" stop-color="#3b82f6" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="radial-progress-bg" cx="50" cy="50" r="40"></circle>
+                            <circle class="radial-progress-bar" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" data-radial-target="${totalCaCible ? Math.min(100, (totalCaRealise/totalCaCible)*100) : 0}"></circle>
+                        </svg>
+                        <div class="radial-progress-text" data-countup-percent="${totalCaCible ? (totalCaRealise/totalCaCible)*100 : 0}">0%</div>
+                    </div>
                 </div>
                 <div class="stat-card animate-in business-card">
                     <div class="stat-label">Dynamique Co. Globale</div>
-                    <div class="stat-value orange">${totalRdv} <span class="stat-target" style="font-size:0.6em; opacity:0.8;">RDV de conquête</span></div>
-                    <div class="stat-target mt-1">${totalOpps} opportunités détectées</div>
+                    <div class="stat-value orange"><span data-countup-int="${totalRdv}">0</span> <span class="stat-target" style="font-size:0.6em; opacity:0.8;">RDV de conquête</span></div>
+                    <div class="stat-target mt-1"><strong data-countup-int="${totalOpps}">0</strong> opportunités détectées</div>
                 </div>
             </div>
 
             <div class="comex-stats mt-4">
                 <div class="stat-card animate-in">
                     <div class="stat-label">Comptes suivis</div>
-                    <div class="stat-value blue">${accountNames.length}</div>
+                    <div class="stat-value blue" data-countup-int="${accountNames.length}">0</div>
                 </div>
                 <div class="stat-card animate-in">
                     <div class="stat-label">Avancement plans d'actions</div>
-                    <div class="stat-value ${globalStatus.cls}">${globalAvg}%</div>
+                    <div class="stat-value ${globalStatus.cls}" data-countup-percent="${globalAvg}">0%</div>
                 </div>
                 <div class="stat-card animate-in">
                     <div class="stat-label">Actions terminées</div>
-                    <div class="stat-value green">${completedActions}/${totalActions}</div>
+                    <div class="stat-value green"><span data-countup-int="${completedActions}">0</span>/${totalActions}</div>
                 </div>
                 <div class="stat-card animate-in">
                     <div class="stat-label">Actions en retard</div>
-                    <div class="stat-value ${totalLate > 0 ? 'red' : 'green'}">${totalLate}</div>
+                    <div class="stat-value ${totalLate > 0 ? 'red' : 'green'}" data-countup-int="${totalLate}">0</div>
                 </div>
             </div>
             <div class="comex-grid mt-4">
@@ -410,36 +426,30 @@
             const rdv = account.commercialDynamics?.rdvConquete || 0;
 
             html += `
-                <div class="account-card status-${status.cls} animate-in" data-navigate="${escapeHtml(name)}">
-                    <div class="account-card-header">
-                        <div class="account-name">${ACCOUNT_ICONS[name] || '🏢'} ${escapeHtml(name)}</div>
-                        <span class="status-badge ${status.cls}">${status.emoji} ${status.label}</span>
-                    </div>
-                    <div class="account-stats-mini border-bottom-subtle pb-2 mb-2">
-                        <div class="mini-stat">
-                            <span class="mini-stat-label">CA Réalisé</span>
-                            <span class="mini-stat-value">${formatCurrency(caR)}</span>
+                <div class="account-card-3d-wrapper">
+                    <div class="account-card status-${status.cls} animate-in" data-navigate="${escapeHtml(name)}">
+                        <div class="account-card-header">
+                            <div class="account-name">${ACCOUNT_ICONS[name] || '🏢'} ${escapeHtml(name)}</div>
+                            <span class="status-badge ${status.cls}">${status.emoji} ${status.label}</span>
                         </div>
-                        <div class="mini-stat">
-                            <span class="mini-stat-label">Cible</span>
-                            <span class="mini-stat-value">${formatCurrency(caC)}</span>
+                        <div class="account-stats-mini border-bottom-subtle pb-2 mb-2">
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">CA Réalisé</span>
+                                <span class="mini-stat-value">${formatCurrency(caR)}</span>
+                            </div>
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">Cible</span>
+                                <span class="mini-stat-value">${formatCurrency(caC)}</span>
+                            </div>
+                            <div class="mini-stat">
+                                <span class="mini-stat-label">RDV</span>
+                                <span class="mini-stat-value">${rdv}</span>
+                            </div>
                         </div>
-                        <div class="mini-stat">
-                            <span class="mini-stat-label">RDV Conquête</span>
-                            <span class="mini-stat-value">${rdv}</span>
+                        <div class="progress-container mt-3">
+                            <div class="progress-header"><span class="progress-label">Avancement actions</span><span class="progress-value ${status.cls}">${avg}%</span></div>
+                            ${generateSparkline(account.actions)}
                         </div>
-                    </div>
-                    <div class="account-meta">
-                        <div class="meta-item"><span class="meta-label">KAM</span><span class="meta-value">${escapeHtml(account.kam)}</span></div>
-                        <div class="meta-item"><span class="meta-label">Sponsor</span><span class="meta-value">${escapeHtml(account.sponsor)}</span></div>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-header"><span class="progress-label">Avancement actions</span><span class="progress-value ${status.cls}">${avg}%</span></div>
-                        <div class="progress-bar"><div class="progress-fill ${status.cls}" style="width: ${avg}%"></div></div>
-                    </div>
-                    <div class="account-footer mt-2">
-                        <span>${account.actions.length} action${account.actions.length > 1 ? 's' : ''}</span>
-                        <span class="late-count ${lateCount === 0 ? 'none' : ''}">${lateCount > 0 ? '⚠ ' + lateCount + ' en retard' : '✓ Aucun retard'}</span>
                     </div>
                 </div>
             `;
@@ -538,7 +548,7 @@
                         <td><input type="date" class="inline-input ${late ? 'late' : ''}" style="width: auto; min-width: 120px;" value="${action.deadline || ''}" data-action-id="${action.id}" data-account="${escapeHtml(accountName)}" data-field="deadline"></td>
                         <td>
                             <div class="inline-slider-container">
-                                <input type="range" class="inline-slider ${actionStatus.cls}" min="0" max="100" step="5" value="${action.progress}" style="--progress: ${action.progress}%" data-action-id="${action.id}" data-account="${escapeHtml(accountName)}" data-field="progress">
+                                <input type="range" class="inline-slider ${actionStatus.cls}" min="0" max="100" step="5" value="${action.progress}" data-last-value="${action.progress}" style="--progress: ${action.progress}%" data-action-id="${action.id}" data-account="${escapeHtml(accountName)}" data-field="progress">
                                 <span class="slider-value ${actionStatus.cls}">${action.progress}%</span>
                             </div>
                         </td>
@@ -580,6 +590,12 @@
         if (e.target.matches('.inline-slider')) {
             const { actionId, account, field } = e.target.dataset;
             const value = parseInt(e.target.value, 10);
+            
+            if (value === 100 && window.confetti && parseInt(e.target.dataset.lastValue || '0', 10) < 100) {
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            }
+            e.target.dataset.lastValue = value;
+
             const status = getStatus(value);
             e.target.className = `inline-slider ${status.cls}`;
             e.target.style.setProperty('--progress', value + '%');
@@ -682,8 +698,79 @@
     }
 
     // ==========================================
-    // INITIALIZATION
+    // INITIALIZATION & ANIMATIONS
     // ==========================================
+
+    function generateSparkline(actions) {
+        if (!actions || actions.length === 0) return '<div class="action-timeline-mini"><div class="timeline-segment todo"></div></div>';
+        const segments = actions.map(a => {
+            if (a.progress >= 100) return '<div class="timeline-segment done"></div>';
+            if (isLate(a.deadline, a.progress)) return '<div class="timeline-segment late"></div>';
+            if (a.progress > 0) return '<div class="timeline-segment progress"></div>';
+            return '<div class="timeline-segment todo"></div>';
+        }).join('');
+        return `<div class="action-timeline-mini">${segments}</div>`;
+    }
+
+    function animateValue(obj, start, end, duration, formatter) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const easeProgress = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+            const current = start + easeProgress * (end - start);
+            obj.textContent = formatter(current);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    function initAnimations() {
+        document.querySelectorAll('[data-countup]').forEach(el => {
+            const target = parseFloat(el.getAttribute('data-countup'));
+            animateValue(el, 0, target, 1500, formatCurrency);
+            el.removeAttribute('data-countup');
+        });
+        document.querySelectorAll('[data-countup-percent]').forEach(el => {
+            const target = parseFloat(el.getAttribute('data-countup-percent'));
+            animateValue(el, 0, target, 1500, val => Math.round(val) + '%');
+            el.removeAttribute('data-countup-percent');
+        });
+        document.querySelectorAll('[data-countup-int]').forEach(el => {
+            const target = parseInt(el.getAttribute('data-countup-int'), 10);
+            animateValue(el, 0, target, 1500, Math.round);
+            el.removeAttribute('data-countup-int');
+        });
+
+        document.querySelectorAll('.radial-progress-bar').forEach(el => {
+            const pct = parseFloat(el.getAttribute('data-radial-target'));
+            const c = Math.PI * (40 * 2);
+            const offset = ((100 - pct) / 100) * c;
+            setTimeout(() => { el.style.strokeDashoffset = offset; }, 50);
+            el.removeAttribute('data-radial-target');
+        });
+
+        document.querySelectorAll('.account-card-3d-wrapper').forEach(wrapper => {
+            if (wrapper.dataset.tiltInitialized) return;
+            wrapper.dataset.tiltInitialized = "true";
+            const card = wrapper.querySelector('.account-card');
+            wrapper.addEventListener('mousemove', e => {
+                const rect = wrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotateX = ((y / rect.height) - 0.5) * -10;
+                const rotateY = ((x / rect.width) - 0.5) * 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+            wrapper.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+    }
 
     async function init() {
         if(headerDate) headerDate.textContent = formatDateHeader();
