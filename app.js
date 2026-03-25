@@ -365,51 +365,70 @@
                 <h2>Vue d'ensemble COMEX</h2>
                 <p>Synthèse cloud synchronisée — mise à jour en temps réel</p>
             </div>
-            
-            <div class="comex-stats-business">
-                <div class="stat-card animate-in business-card" style="display: flex; align-items: center; justify-content: space-between;">
-                    <div>
-                        <div class="stat-label">CA Global (Réalisé / Cible)</div>
-                        <div class="stat-value blue" data-countup="${totalCaRealise}">0</div>
-                        <div class="stat-target mt-1">Objectif: ${formatCurrency(totalCaCible)}</div>
+            <div class="comex-top-dashboard mb-4">
+                <!-- CA GLOBAL -->
+                <div class="comex-ca-card animate-in">
+                    <div class="stat-label text-muted" style="letter-spacing: 0.1em;">CA GLOBAL — RÉALISÉ / CIBLE</div>
+                    <div class="ca-radial-wrapper">
+                        <div class="radial-progress-container lg">
+                            <svg class="radial-progress-svg" viewBox="0 0 100 100">
+                                <circle class="radial-progress-bg ca-stroke" cx="50" cy="50" r="40"></circle>
+                                <circle class="radial-progress-bar ca-stroke" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke="var(--status-green)" data-radial-target="${totalCaCible ? Math.min(100, (totalCaRealise/totalCaCible)*100) : 0}"></circle>
+                            </svg>
+                            <div class="radial-progress-text lg">
+                                <span class="pct" data-countup-percent="${totalCaCible ? (totalCaRealise/totalCaCible)*100 : 0}">0%</span>
+                                <span class="label">atteint</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="radial-progress-container">
-                        <svg class="radial-progress-svg" viewBox="0 0 100 100">
-                            <defs>
-                                <linearGradient id="caGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#8b5cf6" />
-                                    <stop offset="100%" stop-color="#3b82f6" />
-                                </linearGradient>
-                            </defs>
-                            <circle class="radial-progress-bg" cx="50" cy="50" r="40"></circle>
-                            <circle class="radial-progress-bar" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" data-radial-target="${totalCaCible ? Math.min(100, (totalCaRealise/totalCaCible)*100) : 0}"></circle>
-                        </svg>
-                        <div class="radial-progress-text" data-countup-percent="${totalCaCible ? (totalCaRealise/totalCaCible)*100 : 0}">0%</div>
+                    <div class="ca-bottom-stats">
+                        <div class="ca-stat-item">
+                            <span class="stat-label text-muted mb-1">RÉALISÉ</span>
+                            <span class="stat-value blue" style="font-size:1.6rem;" data-countup="${totalCaRealise}">0 €</span>
+                        </div>
+                        <div class="ca-stat-item" style="text-align: right;">
+                            <span class="stat-label text-muted mb-1">CIBLE</span>
+                            <span class="stat-value green" style="font-size:1.6rem;" data-countup="${totalCaCible}">0 €</span>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-card animate-in business-card">
-                    <div class="stat-label">Dynamique Co. Globale</div>
-                    <div class="stat-value orange"><span data-countup-int="${totalRdv}">0</span> <span class="stat-target" style="font-size:0.6em; opacity:0.8;">RDV de conquête</span></div>
-                    <div class="stat-target mt-1"><strong data-countup-int="${totalOpps}">0</strong> opportunités détectées</div>
-                </div>
-            </div>
 
-            <div class="comex-stats mt-4">
-                <div class="stat-card animate-in">
-                    <div class="stat-label">Comptes suivis</div>
-                    <div class="stat-value blue" data-countup-int="${accountNames.length}">0</div>
-                </div>
-                <div class="stat-card animate-in">
-                    <div class="stat-label">Avancement plans d'actions</div>
-                    <div class="stat-value ${globalStatus.cls}" data-countup-percent="${globalAvg}">0%</div>
-                </div>
-                <div class="stat-card animate-in">
-                    <div class="stat-label">Actions terminées</div>
-                    <div class="stat-value green"><span data-countup-int="${completedActions}">0</span>/${totalActions}</div>
-                </div>
-                <div class="stat-card animate-in">
-                    <div class="stat-label">Actions en retard</div>
-                    <div class="stat-value ${totalLate > 0 ? 'red' : 'green'}" data-countup-int="${totalLate}">0</div>
+                <!-- KPIs COMEX -->
+                <div class="comex-kpi-grid">
+                    <div class="stat-card kpi-card border-bottom-orange animate-in" style="animation-delay: 100ms;">
+                        <div class="kpi-icon orange">⚡</div>
+                        <div>
+                            <div class="stat-value orange" data-countup-percent="${globalAvg}">0%</div>
+                            <div class="stat-label mt-1 text-muted" style="text-transform: none; font-size: 0.85rem;">Avancement plans d'action</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card kpi-card border-bottom-green animate-in" style="animation-delay: 150ms;">
+                        <div class="kpi-icon green">✓</div>
+                        <div>
+                            <div class="stat-value green"><span data-countup-int="${completedActions}">0</span><span style="font-size:0.6em; opacity:0.7">/${totalActions}</span></div>
+                            <div class="stat-label mt-1 text-muted" style="text-transform: none; font-size: 0.85rem;">Actions terminées</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card kpi-card border-bottom-blue animate-in" style="animation-delay: 200ms;">
+                        <div class="kpi-icon blue">📈</div>
+                        <div>
+                            <div class="stat-value blue" style="display:flex; align-items: baseline; gap: 4px;">
+                                <span data-countup-int="${totalRdv}">0</span>
+                                <span style="font-size: 0.5em; opacity: 0.8;">RDV</span>
+                            </div>
+                            <div class="stat-label mt-1 text-muted" style="text-transform: none; font-size: 0.85rem;">${totalOpps} op. détectées</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card kpi-card border-bottom-red animate-in" style="animation-delay: 250ms;">
+                        <div class="kpi-icon red">!</div>
+                        <div>
+                            <div class="stat-value red" data-countup-int="${totalLate}">0</div>
+                            <div class="stat-label mt-1 text-muted" style="text-transform: none; font-size: 0.85rem;">Actions en retard</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="comex-grid mt-4">
