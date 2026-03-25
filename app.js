@@ -699,12 +699,25 @@
         renderTabs(); // refresh badges if needed (though metrics don't affect badges right now, but good practice)
     }
 
-    async function deleteAction(accountName, actionId) {
-        if (!confirm('Supprimer ?')) return;
-        data.accounts[accountName].actions = data.accounts[accountName].actions.filter(a => a.id !== actionId);
-        await pushAccountToSupabase(accountName);
+    let pendingDeleteAccount = null, pendingDeleteId = null;
+    const deleteConfirmOverlay = document.getElementById('deleteConfirmOverlay');
+    const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
+    const deleteCancelBtn = document.getElementById('deleteCancelBtn');
+    if (deleteCancelBtn) deleteCancelBtn.onclick = () => deleteConfirmOverlay.classList.remove('open');
+    if (deleteConfirmBtn) deleteConfirmBtn.onclick = async () => {
+        if (!pendingDeleteAccount || !pendingDeleteId) return;
+        data.accounts[pendingDeleteAccount].actions = data.accounts[pendingDeleteAccount].actions.filter(a => a.id !== pendingDeleteId);
+        await pushAccountToSupabase(pendingDeleteAccount);
         saveLocalData(data);
+        deleteConfirmOverlay.classList.remove('open');
+        pendingDeleteAccount = null; pendingDeleteId = null;
         render();
+    };
+
+    async function deleteAction(accountName, actionId) {
+        pendingDeleteAccount = accountName;
+        pendingDeleteId = actionId;
+        if (deleteConfirmOverlay) deleteConfirmOverlay.classList.add('open');
     }
 
     // ==========================================
@@ -790,5 +803,42 @@
         render();
     }
 
-    init();
+    // ==========================================
+    // PASSWORD GATE
+    // ==========================================
+    const COCKPIT_PASSWORD = 'cockpit';
+    const COCKPIT_SESSION_KEY = 'kam_cockpit_auth';
+    const passwordGate = document.getElementById('passwordGate');
+    const appRoot = document.getElementById('appRoot');
+    const pwdInput = document.getElementById('pwdInput');
+    const pwdSubmit = document.getElementById('pwdSubmit');
+    const pwdError = document.getElementById('pwdError');
+
+    function unlockApp() {
+        passwordGate.style.display = 'none';
+        appRoot.style.display = '';
+        sessionStorage.setItem(COCKPIT_SESSION_KEY, '1');
+        init();
+    }
+
+    function checkPassword() {
+        if (pwdInput.value === COCKPIT_PASSWORD) {
+            unlockApp();
+        } else {
+            pwdError.textContent = 'Mot de passe incorrect';
+            pwdInput.style.borderColor = '#ef4444';
+            pwdInput.value = '';
+            pwdInput.focus();
+        }
+    }
+
+    if (pwdSubmit) pwdSubmit.addEventListener('click', checkPassword);
+    if (pwdInput) pwdInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') checkPassword(); });
+
+    if (sessionStorage.getItem(COCKPIT_SESSION_KEY) === '1') {
+        unlockApp();
+    } else {
+        if (pwdInput) setTimeout(() => pwdInput.focus(), 100);
+    }
+
 })();

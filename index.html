@@ -26,7 +26,20 @@
     <script src="config.js"></script>
 </head>
 <body>
-    <div class="app">
+    <!-- Password Gate -->
+    <div id="passwordGate" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--bg-primary, #0d0f1a);">
+        <div style="background:var(--bg-card, #1a1d2e);border:1px solid var(--border-subtle, rgba(255,255,255,0.08));border-radius:20px;padding:48px 40px;text-align:center;max-width:400px;width:90%;box-shadow:0 32px 64px rgba(0,0,0,0.4);">
+            <div style="font-size:3rem;margin-bottom:16px;">🔐</div>
+            <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:8px;color:var(--text-primary,#f8fafc);">KAM Cockpit</h2>
+            <p style="color:var(--text-muted,#94a3b8);font-size:0.88rem;margin-bottom:28px;">Accès réservé — Entrez le mot de passe</p>
+            <input type="password" id="pwdInput" placeholder="Mot de passe..." autocomplete="current-password"
+                   style="width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border-subtle,rgba(255,255,255,0.1));background:var(--bg-input,rgba(255,255,255,0.05));color:var(--text-primary,#f8fafc);font-size:1rem;margin-bottom:12px;box-sizing:border-box;outline:none;">
+            <div id="pwdError" style="color:#ef4444;font-size:0.8rem;margin-bottom:12px;min-height:1em;"></div>
+            <button id="pwdSubmit" style="width:100%;padding:12px;border-radius:10px;border:none;background:linear-gradient(135deg,#637aff,#8b5cf6);color:#fff;font-weight:700;font-size:1rem;cursor:pointer;">Entrer dans le Cockpit 🚀</button>
+        </div>
+    </div>
+
+    <div class="app" id="appRoot" style="display:none;">
         <!-- Header -->
         <header class="header">
             <div class="header-left">
@@ -98,6 +111,19 @@
             </div>
             <!-- Dynamic content rendered by JS -->
         </main>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteConfirmOverlay">
+        <div class="modal" style="max-width:380px;text-align:center;">
+            <div style="font-size:2.5rem;margin-bottom:12px;">⚠️</div>
+            <h3 style="margin-bottom:8px;">Supprimer cette action ?</h3>
+            <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:24px;">Cette action sera définitivement supprimée de la base de données.</p>
+            <div style="display:flex;gap:12px;justify-content:center;">
+                <button class="btn btn-ghost" id="deleteCancelBtn">Annuler</button>
+                <button class="btn btn-danger" id="deleteConfirmBtn">🗑️ Supprimer</button>
+            </div>
+        </div>
     </div>
 
     <!-- Modal for adding actions -->
