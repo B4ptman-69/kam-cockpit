@@ -1098,12 +1098,19 @@ tr:hover {
 /* ========================================
    Responsive
    ======================================== */
+@media (max-width: 1300px) {
+    .comex-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 1100px) {
     .comex-grid {
         grid-template-columns: 1fr;
     }
-    .comex-stats {
-        grid-template-columns: repeat(2, 1fr);
+    .business-metrics-grid,
+    .comex-stats-business {
+        grid-template-columns: 1fr;
     }
     .account-summary-strip {
         grid-template-columns: repeat(2, 1fr);
@@ -1131,14 +1138,25 @@ tr:hover {
     }
     .tabs {
         padding: 8px 16px 0;
+        overflow-x: auto;
+        white-space: nowrap;
+        display: flex;
     }
-    .form-row {
+    .form-row,
+    .metric-row-edit {
         flex-direction: column;
+    }
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
 @media (max-width: 480px) {
     .comex-stats {
+        grid-template-columns: 1fr;
+    }
+    .account-summary-strip {
         grid-template-columns: 1fr;
     }
 }
